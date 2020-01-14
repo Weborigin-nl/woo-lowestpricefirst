@@ -21,11 +21,11 @@ add_action( 'plugins_loaded', 'show_only_lowest_prices_in_woocommerce_variable_p
 function wc_wc20_variation_price_format( $price, $product ) {
     // Main prices
     $prices = array( $product->get_variation_price( 'min', true ), $product->get_variation_price( 'max', true ) );
-    $price = $prices[0] !== $prices[1] ? sprintf( __( '<span class="woofrom">v.a. </span>%1$s', 'show-only-lowest-prices-in-woocommerce-variable-products' ), wc_price( $prices[0] ) ) : wc_price( $prices[0] );
+    $price = $prices[0] !== $prices[1] ? sprintf( __( '<span class="woofrom">From: </span>%1$s', 'show-only-lowest-prices-in-woocommerce-variable-products' ), wc_price( $prices[0] ) ) : wc_price( $prices[0] );
     // Sale price
     $prices = array( $product->get_variation_regular_price( 'min', true ), $product->get_variation_regular_price( 'max', true ) );
     sort( $prices );
-    $saleprice = $prices[0] !== $prices[1] ? sprintf( __( '<span class="woofrom">v.a. </span>%1$s', 'show-only-lowest-prices-in-woocommerce-variable-products' ), wc_price( $prices[0] ) ) : wc_price( $prices[0] );
+    $saleprice = $prices[0] !== $prices[1] ? sprintf( __( '<span class="woofrom">From: </span>%1$s', 'show-only-lowest-prices-in-woocommerce-variable-products' ), wc_price( $prices[0] ) ) : wc_price( $prices[0] );
     if ( $price !== $saleprice ) {
         $price = '<del>' . $saleprice . '</del> <ins>' . $price . '</ins>';
     }
